@@ -1,0 +1,34 @@
+{
+  "name": "ngrx-strong-effects",
+  "version": "1.0.2",
+  "description": "Strongly typed NgRx Effects",
+  "main": "index.ts",
+  "files": [
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavel-agarkov/NgRx-Strong-Effects.git"
+  },
+  "keywords": [
+    "NgRx",
+    "RxJs",
+    "Angular",
+    "Effects",
+    "Actions",
+    "Strongly typed"
+  ],
+  "author": {
+    "name": "Pavel Agarkov",
+    "email": "Pavel.Agarkov@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pavel-agarkov/NgRx-Strong-Effects/issues"
+  },
+  "homepage": "https://github.com/pavel-agarkov/NgRx-Strong-Effects#readme",
+  "peerDependencies": {
+    "@ngrx/effects": ">= 4.0.0",
+    "rxjs": ">= 5.0.0"
+  }
+}

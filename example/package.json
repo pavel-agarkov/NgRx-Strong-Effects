@@ -1,0 +1,30 @@
+{
+  "name": "ngrx-strong-effects-example",
+  "version": "1.0.0",
+  "description": "Strongly typed NgRx Effects example",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavel-agarkov/NgRx-Strong-Effects.git"
+  },
+  "keywords": [
+    "NgRx",
+    "Angular",
+    "Effects"
+  ],
+  "author": "Pavel Agarkov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pavel-agarkov/NgRx-Strong-Effects/issues"
+  },
+  "homepage": "https://github.com/pavel-agarkov/NgRx-Strong-Effects#readme",
+  "dependencies": {
+    "ngrx-strong-effects": "^1.0.0",
+    "@angular/core": "5.2.2",
+    "@angular/router": "5.2.2",
+    "@ngrx/core": "1.2.0",
+    "@ngrx/effects": "5.0.1",
+    "@ngrx/router-store": "5.0.1",
+    "@ngrx/store": "5.0.0",
+    "rxjs": "5.5.6"
+  }
+}
