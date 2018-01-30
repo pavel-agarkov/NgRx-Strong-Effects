@@ -8,7 +8,7 @@ declare module "@ngrx/effects" {
     }
 };
 
-declare type ActionsModule = { [x: string]: { prototype: { type: string } } };
+declare type ActionsModule = { [className: string]: { prototype: { type: string } } };
 declare type ActionWithType<Type extends string> = { type: Type };
 export declare type ActionTypesUnion<TModule extends ActionsModule> = TModule[keyof TModule]["prototype"]["type"];
 export declare type ActionsUnion<TModule extends ActionsModule> = TModule[keyof TModule]["prototype"];
@@ -19,13 +19,13 @@ export declare type ActionsOfType<A, T extends string> = A extends ActionWithTyp
  * @param fromActionsModule - reference to a module with actions like Actions from `import * as Actions from "./some.actions"`
  */
 export function CreateActionTypesEnum<TModule extends ActionsModule>(fromActionsModule: TModule)
-    : Readonly<{[x in keyof TModule]: TModule[x]["prototype"]["type"]}>
+    : Readonly<{[className in keyof TModule]: TModule[className]["prototype"]["type"]}>
 {
-    const actType: any = {};
+    const actionsEnum: any = {};
     for (let actionClassName in fromActionsModule)
     {
-        actType[actionClassName] =
+        actionsEnum[actionClassName] =
             new ((fromActionsModule[actionClassName].prototype as any).constructor)().type
     }
-    return actType;
+    return actionsEnum;
 }
