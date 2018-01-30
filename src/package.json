@@ -1,6 +1,6 @@
 {
   "name": "ngrx-strong-effects",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Strongly typed NgRx Effects",
   "main": "index.ts",
   "files": [
