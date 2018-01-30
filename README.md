@@ -11,7 +11,7 @@ import * as Actions from "./example.actions";
 
 ### ActionsUnion
 ```ts
-export declare type Action = ActionsUnion<typeof Actions>;
+export type Action = ActionsUnion<typeof Actions>;
 ```
 instead of
 ```ts
