@@ -2,9 +2,9 @@ import { Observable } from "rxjs/Observable";
 import { } from "@ngrx/effects";
 
 declare module "@ngrx/effects" {
-    export class Actions<V, TActionTypes extends string> extends Observable<V>
+    export class Actions<V extends { type: string }> extends Observable<V>
     {
-        ofType<T extends TActionTypes>(...allowedTypes: T[]): Actions<ActionsOfType<V, T>, T>;
+        ofType<T extends V["type"]>(...allowedTypes: T[]): Actions<ActionsOfType<V, T>>;
     }
 };
 

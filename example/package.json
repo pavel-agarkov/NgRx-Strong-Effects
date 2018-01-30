@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/pavel-agarkov/NgRx-Strong-Effects#readme",
   "dependencies": {
-    "ngrx-strong-effects": "^1.0.0",
+    "ngrx-strong-effects": "1.0.4",
     "@angular/core": "5.2.2",
     "@angular/router": "5.2.2",
     "@ngrx/core": "1.2.0",

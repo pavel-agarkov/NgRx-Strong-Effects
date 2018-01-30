@@ -10,7 +10,7 @@ import { ActionTypes, Action } from "./example.action-sets";
 @Injectable()
 export class ExampleEffects
 {
-    constructor(protected readonly actions$: Actions<Action, ActionTypes>) { }
+    constructor(protected readonly actions$: Actions<Action>) { }
 
     @Effect() publishCommand$ = this.actions$.ofType(ActionTypes.Publish)
         .switchMap(act =>
