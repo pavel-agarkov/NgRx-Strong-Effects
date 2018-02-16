@@ -69,3 +69,5 @@ export class ExampleEffects
         }));
 }
 ```
+
+If you don't want to wait for Conditional types to arrive - you can use a simplified [version that works even w/o them](https://github.com/pavel-agarkov/NgRx-Strong-Effects/tree/w/o-conditional-types)
