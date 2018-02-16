@@ -14,7 +14,7 @@ export abstract class RouterNavigation implements RouterNavigationAction
 
 export class Publish
 {
-    readonly type = "PUBLISH";
+    readonly type = "Publish";
     constructor(
         readonly payload: Readonly<{ id: number, name: string }>
     ) { }
@@ -22,7 +22,7 @@ export class Publish
 
 export class Published
 {
-    readonly type = "PUBLISHED";
+    readonly type = "Published";
     constructor(
         readonly payload: Readonly<{ id: number, name: string, timestamp: Date }>
     ) { }

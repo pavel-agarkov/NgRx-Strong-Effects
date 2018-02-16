@@ -1,6 +1,6 @@
 # Strongly typed NgRx Effects
 
-This package provides type assertions and methods to implement strongly typed NgRx effects. Implementation depends on [Conditional types](https://github.com/Microsoft/TypeScript/pull/21316) and can't be used without it.
+This package provides simplified version of type assertions and methods to implement strongly typed NgRx effects until TypeScript doesn't have [Conditional types](https://github.com/Microsoft/TypeScript/pull/21316).
 
 After importing all actions like this
 ```ts
@@ -23,7 +23,7 @@ export type ActionTypes = ActionTypesUnion<typeof Actions>;
 ```
 instead of
 ```ts
-export type ActionTypes = "ROUTER_NAVIGATION" | "PUBLISH" | "PUBLISHED" ...
+export type ActionTypes = "ROUTER_NAVIGATION" | "Publish" | "Published" ...
 ```
 ### CreateActionTypesEnum
 ```ts
@@ -33,8 +33,8 @@ instead of
 ```ts
 export enum ActionTypes: {
     RouterNavigation = "ROUTER_NAVIGATION";
-    Publish = "PUBLISH";
-    Published = "PUBLISHED";
+    Publish = "Publish";
+    Published = "Published";
     ...
 }
 ```
@@ -47,12 +47,15 @@ import { Actions, Effect } from "@ngrx/effects";
 import { switchMap } from "rxjs/operators";
 import { of } from "rxjs/observable/of";
 import "rxjs/add/operator/switchMap";
+
 import { ActionTypes, Action } from "./example.action-sets";
+import * as ActionsModule from "./example.actions";
+
 
 @Injectable()
 export class ExampleEffects
 {
-    constructor(protected readonly actions$: Actions<Action>) { }
+    constructor(protected readonly actions$: Actions<Action, typeof ActionsModule>) { }
 
     @Effect() publishCommand$ = this.actions$.ofType(ActionTypes.Publish)
         .switchMap(act =>

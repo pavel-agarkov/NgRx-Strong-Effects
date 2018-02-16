@@ -5,12 +5,13 @@ import { of } from "rxjs/observable/of";
 import "rxjs/add/operator/switchMap";
 
 import { ActionTypes, Action } from "./example.action-sets";
+import * as ActionsModule from "./example.actions";
 
 
 @Injectable()
 export class ExampleEffects
 {
-    constructor(protected readonly actions$: Actions<Action>) { }
+    constructor(protected readonly actions$: Actions<Action, typeof ActionsModule>) { }
 
     @Effect() publishCommand$ = this.actions$.ofType(ActionTypes.Publish)
         .switchMap(act =>

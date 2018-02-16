@@ -2,30 +2,30 @@ import { Observable } from "rxjs/Observable";
 import { } from "@ngrx/effects";
 
 declare module "@ngrx/effects" {
-    export class Actions<V extends { type: string }> extends Observable<V>
+    export class Actions<TAction extends ActionsUnion<TModule>, TModule extends ActionsModule> extends Observable<TAction>
     {
-        ofType<T extends V["type"]>(...allowedTypes: T[]): Actions<ActionsOfType<V, T>>;
+        ofType<T extends ActionTypesUnion<TModule>>(...allowedTypes: T[]): Actions<ActionsOfType<TModule, T>, TModule>;
     }
 };
 
 declare type ActionsModule = { [className: string]: { prototype: { type: string } } };
 declare type ActionWithType<Type extends string> = { type: Type };
-export declare type ActionTypesUnion<TModule extends ActionsModule> = TModule[keyof TModule]["prototype"]["type"];
+export declare type ActionTypesUnion<TModule extends ActionsModule> = keyof TModule;
 export declare type ActionsUnion<TModule extends ActionsModule> = TModule[keyof TModule]["prototype"];
-export declare type ActionsOfType<A, T extends string> = A extends ActionWithType<T>?A: never;
+export declare type ActionsOfType<TModule extends ActionsModule, T extends keyof TModule> = TModule[T]["prototype"];
 
 /**
- * Generates enum with all action class names as properties and action types as velues
+ * Generates enum with all action class names as properties and velues as well
  * @param fromActionsModule - reference to a module with actions like Actions from `import * as Actions from "./some.actions"`
  */
 export function CreateActionTypesEnum<TModule extends ActionsModule>(fromActionsModule: TModule)
-    : Readonly<{[className in keyof TModule]: TModule[className]["prototype"]["type"]}>
+    : Readonly<{[className in keyof TModule]: className}>
 {
     const actionsEnum: any = {};
     for (let actionClassName in fromActionsModule)
     {
-        actionsEnum[actionClassName] =
-            new ((fromActionsModule[actionClassName].prototype as any).constructor)().type
+        (<any>actionsEnum)[actionClassName] = new (<any>(<any>
+            fromActionsModule[actionClassName].prototype).constructor)().type
     }
     return actionsEnum;
 }
